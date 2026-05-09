@@ -48,7 +48,7 @@ h1, h2, h3, h4, .display, .eyebrow {
   color: var(--ink);
   letter-spacing: -0.01em;
 }
-h1 { font-size: clamp(34px, 5.4vw, 64px); line-height: 1.04; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 18px; }
+h1 { font-size: clamp(34px, 5.4vw, 64px); line-height: 1.04; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 18px; text-transform: capitalize; }
 h2 { font-size: clamp(26px, 3.4vw, 40px); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 16px; text-transform: capitalize; }
 h3 { font-size: clamp(20px, 2vw, 24px); line-height: 1.2; font-weight: 700; margin: 0 0 8px; text-transform: capitalize; }
 h4 { font-size: 16px; line-height: 1.3; font-weight: 700; margin: 0 0 6px; text-transform: capitalize; }
@@ -174,8 +174,8 @@ p  { margin: 0 0 14px; color: var(--ink-2); }
 .btn--sm { padding: 10px 14px; font-size: 13px; }
 .btn--accent { background: var(--gold); border-color: var(--gold); color: var(--navy-900); font-weight: 800; }
 .btn--accent:hover { background: var(--gold-dark); border-color: var(--gold-dark); color: #fff; }
-.btn--gold { background: var(--gold); border-color: var(--gold); color: var(--navy-900); font-weight: 800; }
-.btn--gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); color: var(--navy-900); transform: translateY(-1px); }
+.btn--gold { background: var(--gold); border-color: var(--gold-dark); color: var(--navy-900); font-weight: 800; box-shadow: 0 2px 10px rgba(236,195,11,.35); }
+.btn--gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); color: var(--navy-900); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(236,195,11,.45); }
 .btn--ghost { background: transparent; color: var(--navy); border-color: var(--navy); }
 .btn--ghost:hover { background: var(--navy); color: #fff; }
 .btn--ghost-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
@@ -209,6 +209,9 @@ p  { margin: 0 0 14px; color: var(--ink-2); }
   .trust > div { border-right: 1px solid var(--line); }
   .trust > div:last-child { border-right: 0; }
 }
+/* trust strip inside hero — needs light text on dark background */
+.hero .trust { border-top-color: rgba(255,255,255,.15); border-bottom-color: rgba(255,255,255,.15); background: rgba(255,255,255,.06); }
+.hero .trust > div { color: rgba(255,255,255,.85); border-right-color: rgba(255,255,255,.15); }
 
 /* hero */
 .hero {
@@ -277,6 +280,10 @@ p  { margin: 0 0 14px; color: var(--ink-2); }
   color: var(--muted); text-transform: uppercase;
 }
 .hero .imgslot__corner { color: rgba(255,255,255,.6); }
+
+/* hide design-prototype labels/corners when a real photo is present */
+.imgslot--photo .imgslot__label,
+.imgslot--photo .imgslot__corner { display: none; }
 
 /* real photo inside an imgslot */
 .imgslot__img {
@@ -533,6 +540,7 @@ p  { margin: 0 0 14px; color: var(--ink-2); }
 .site-footer a { color: rgba(255,255,255,.78); display: block; padding: 4px 0; font-size: 14px; }
 .site-footer a:hover { color: #fff; }
 .foot-grid { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (max-width: 699px) { .foot-grid { text-align: center; } .foot-grid .brand { justify-content: center; } .site-footer a { display: block; text-align: center; } .foot-bottom { flex-direction: column; align-items: center; text-align: center; } }
 @media (min-width: 700px) { .foot-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
 .foot-bottom {
   margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12);
@@ -637,6 +645,7 @@ p  { margin: 0 0 14px; color: var(--ink-2); }
 @media (min-width: 700px) { .statrow > div { border-bottom: 0; border-right: 1px solid var(--line); } .statrow > div:last-child { border-right: 0; } }
 .statrow .num { font-family: "Raleway", sans-serif; font-weight: 800; font-size: clamp(34px, 4vw, 48px); letter-spacing: -0.03em; line-height: 1; color: var(--navy); }
 .statrow .lbl { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+@media (max-width: 699px) { .statrow > div { text-align: center; } }
 
 /* article list */
 .posts { display: grid; gap: 18px; }
